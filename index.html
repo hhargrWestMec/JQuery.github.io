@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JQuery</title>
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <nav class="columnOne"></nav>
+
+    <div class="columnTwo">
+      <header>
+        <h1 class="headingText">JQuery <span id="smallTitleText"> write less, do more. </span></h1>
+      </header>
+      <div class="rowOne">
+        <article class="articleOne">
+          <h2 class="subheaderText">What is JQuery</h2>
+
+          <p class="bodyText">
+            jQuery is a fast, small, and feature-rich JavaScript library. It
+            makes things like HTML document traversal and manipulation, event
+            handling, animation, and Ajax much simpler with an easy-to-use API
+            that works across a multitude of browsers. With a combination of
+            versatility and extensibility, jQuery has changed the way that
+            millions of people write JavaScript.
+            <br /><br />
+            jQuery UI is built for designers and developers alike. We've
+            designed all of our plugins to get you up and running quickly while
+            being flexible enough to evolve with your needs and solve a plethora
+            of use cases. If you're new to jQuery UI, check out our
+            <a
+              href="https://learn.jquery.com/jquery-ui/getting-started/"
+              target="_blank"
+            >
+              getting started guide
+            </a>
+            and
+            <a href="https://learn.jquery.com/jquery-ui/" target="_blank">
+              other tutorials </a
+            >. Play around with the
+            <a href="https://jqueryui.com/demos/" target="_blank">demos</a> and
+            read through the
+            <a href="https://api.jqueryui.com/" target="_blank">
+              API documentation</a
+            >
+            to get an idea of what's possible.
+          </p>
+
+          <h2 class="subheaderText"> About JQuery</h2>
+          <p class="bodyText">
+            Getting started with jQuery can be easy or challenging, depending on your experience with JavaScript, HTML, CSS, and programming concepts in general. In addition to these articles, you can read about the <a href="https://jquery.org/history/" target="_blank"> history of jQuery </a> and the <a href="https://jquery.org/license/" target="_blank"> licensing terms </a> that apply to jQuery projects. You can also make a <a href="https://openjsf.org/about/project-funding-opportunities/" target="_blank"> donation </a>to help the jQuery <a href="https://jquery.org/team/" target="_blank"> team </a> continue to improve jQuery.
+            <br><br>
+            One important thing to know is that jQuery is just a <strong>JavaScript library</strong>. All the power of jQuery is accessed via JavaScript, so having a strong grasp of JavaScript is essential for understanding, structuring, and debugging your code. While working with jQuery regularly can, over time, improve your proficiency with JavaScript, it can be hard to get started writing jQuery without a working knowledge of JavaScript's built-in constructs and syntax. Therefore, if you're new to JavaScript, we recommend checking out the <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics" target="_blank"> JavaScript basics tutorial </a> on the Mozilla Developer Network (MDN).
+          </p>
+
+          <h2 class="subheaderText">
+            Frequently Asked Questions
+          </h2>
+
+          <!-- JQuery FAQ Accordion-->
+          <div id="accordion" class="accordionMain">
+            <h3>How do I select an item using class or ID?</h3>
+            <div>
+              <p>
+                This code selects an element with an ID of "myDivId". Since IDs
+                are unique, this expression always selects either zero or one
+                elements depending upon whether or not an element with the
+                specified ID exists.
+              </p>
+              <code class="language-javascript"> $( "#myDivId" ); </code>
+              <p>
+                This code selects an element with a class of "myCssClass". Since
+                any number of elements can have the same class, this expression
+                will select any number of elements.
+              </p>
+              <code> $( ".myCssClass" ); </code>
+              <p>
+                A jQuery object containing the selected element can be assigned
+                to a JavaScript variable like normal:
+              </p>
+              <code> var myDivElement = $( "#myDivId" ); </code>
+              <p>
+                Usually, elements in a jQuery object are acted on by other
+                jQuery functions:
+              </p>
+              <code>
+                var myValue = $( "#myDivId" ).val(); // Get the value of a form
+                input.
+                <br /><br />
+                $( "#myDivId" ).val( "hello world" ); // Set the value of a form
+                input.
+              </code>
+            </div>
+            <h3>How do I select elements when I already have a DOM element?</h3>
+            <div>
+              <p>
+                If you have a variable containing a DOM element, and want to
+                select elements related to that DOM element, simply wrap it in a
+                jQuery object.
+              </p>
+              <code>
+                var myDomElement = document.getElementById( "foo" ); // A plain
+                DOM element.
+                <br /><br />
+                $( myDomElement ).find( "a" ); // Finds all anchors inside the
+                DOM element.
+              </code>
+              <p>
+                Many people try to concatenate a DOM element or jQuery object
+                with a CSS selector, like so:
+              </p>
+              <code>
+                $( myDomElement + ".bar" ); // This is equivalent to $( "[object
+                HTMLElement].bar" );
+              </code>
+            </div>
+            <h3>How do I test whether an element exists?</h3>
+            <div>
+              <p>
+                Use the .length property of the jQuery collection returned by
+                your selector:
+              </p>
+              <code>
+                if ( $( "#myDiv" ).length ) {
+                <br /><br />
+                $( "#myDiv" ).show();
+                <br /><br />
+                }
+              </code>
+              <p>
+                Note that it isn't always necessary to test whether an element
+                exists. The following code will show the element if it exists,
+                and do nothing (with no errors) if it does not:
+              </p>
+              <code> $( "#myDiv" ).show(); </code>
+            </div>
+            <h3>How do I determine the state of a toggled element?</h3>
+            <div>
+              <p>
+                You can determine whether an element is collapsed or not by
+                using the :visible and :hidden selectors.
+              </p>
+              <code>
+                var isVisible = $( "#myDiv" ).is( ":visible" );
+                <br /><br />
+                var isHidden = $( "#myDiv" ).is( ":hidden" );
+              </code>
+              <p>
+                If you're simply acting on an element based on its visibility,
+                just include :visible or :hidden in the selector expression. For
+                example:
+              </p>
+              <code>
+                $( "#myDiv:visible" ).animate({
+                <br /><br />
+                left: "+=200px"
+                <br /><br />
+                }, "slow" );
+              </code>
+            </div>
+            <h3>
+              How do I select an element by an ID that has characters used in
+              CSS notation?
+            </h3>
+            <div>
+              <p>
+                Because jQuery uses CSS syntax for selecting elements, some
+                characters are interpreted as CSS notation. In order to tell
+                jQuery to treat these characters literally rather than as CSS
+                notation, they must be escaped by placing two backslashes in
+                front of them.
+              </p>
+              <code>
+                // Does not work: $( "#some:id" )
+                <br /><br />
+                // Works! $( "#some\\:id" )
+                <br /><br />
+                // Does not work: $( "#some.id" )
+                <br /><br />
+                // Works! $( "#some\\.id" )
+              </code>
+              <p>
+                The following function takes care of escaping these characters
+                and places a "#" at the beginning of the ID string:
+              </p>
+              <code>
+                function jq( myid ) {
+                <br /><br />
+                return "#" + myid.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" );
+                <br /><br />
+              </code>
+              <p>The function can be used like so:</p>
+              <code> $( jq( "some.id" ) ) </code>
+            </div>
+            <h3>How do I check/uncheck a checkbox input or radio button?</h3>
+            <div>
+              <p>
+                You can check or uncheck a checkbox element or a radio button
+                using the .prop() method:
+              </p>
+              <code>
+                // Check #x $( "#x" ).prop( "checked", true );
+                <br /><br />
+                // Uncheck #x $( "#x" ).prop( "checked", false );
+              </code>
+            </div>
+          </div>
+
+          <p class="bodyText" style="padding-left: 2vw">
+            For more questions and answers, visit the
+            <a
+              href="https://learn.jquery.com/using-jquery-core/faq/"
+              target="_blank"
+              >JQuery FAQ</a
+            >
+            page.
+          </p>
+          <h2 class="subheaderText">
+            Widget Examples
+          </h2>
+            <h3 class="miniHeaderText">
+              Date Picker
+            </h3>
+              <p class="miniText"> 
+                The datepicker is tied to a standard form input field. Focus on the input (click, or use the tab key) to open an interactive calendar in a small overlay. Choose a date, click elsewhere on the page (blur the input), or hit the Esc key to close. If a date is chosen, feedback is shown as the input's value.
+              </p>
+              <p class="miniText">Date: <input type="text" id="datepicker"></p>
+
+                <br>
+
+            <h3 class="miniHeaderText">
+              Progress Bar
+            </h3>
+              <p class="miniText"> 
+                Display status of a determinate or indeterminate process.
+              </p>
+
+              <input type="number" class="miniText" title="Input number here to change progress bar value ( Max 100 )" id="numInput" min="0" max="100">
+
+              <input type="submit" value="Change Value" id="progButton" onclick="changeValue();">
+
+              
+              <br><br>
+
+              <div id="progressbar" class="miniText"></div>
+
+              <br> 
+
+                <h3 class="miniHeaderText">
+                  Menu
+                </h3>
+                  <p class="miniText">
+                    A menu with the default configuration, disabled items and nested menus. A list is transformed, adding theming, mouse and keyboard navigation support. Try to tab to the menu then use the cursor keys to navigate.
+                  </p>
+                  <ul id="menu" class="miniText">
+                    <li class="ui-state-disabled"><div>Toys (n/a)</div></li>
+                    <li><div>Books</div></li>
+                    <li><div>Clothing</div></li>
+                    <li><div>Electronics</div>
+                      <ul>
+                        <li class="ui-state-disabled"><div>Home Entertainment</div></li>
+                        <li><div>Car Hifi</div></li>
+                        <li><div>Utilities</div></li>
+                      </ul>
+                    </li>
+                    <li><div>Movies</div></li>
+                    <li><div>Music</div>
+                      <ul>
+                        <li><div>Rock</div>
+                          <ul>
+                            <li><div>Alternative</div></li>
+                            <li><div>Classic</div></li>
+                          </ul>
+                        </li>
+                        <li><div>Jazz</div>
+                          <ul>
+                            <li><div>Freejazz</div></li>
+                            <li><div>Big Band</div></li>
+                            <li><div>Modern</div></li>
+                          </ul>
+                        </li>
+                        <li><div>Pop</div></li>
+                      </ul>
+                    </li>
+                    <li class="ui-state-disabled"><div>Specials (n/a)</div></li>
+                  </ul>
+
+                  <ul id="menu2" class="miniText2">
+                    <li class="ui-widget-header"><div>Category 1</div></li>
+                    <li><div>Option 1</div></li>
+                    <li><div>Option 2</div></li>
+                    <li><div>Option 3</div></li>
+                    <li class="ui-widget-header"><div>Category 2</div></li>
+                    <li><div>Option 4</div></li>
+                    <li><div>Option 5</div></li>
+                    <li><div>Option 6</div></li>
+                  </ul>
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+                  <h3 class="miniHeaderText">
+                    Slider
+                  </h3>
+                    <p class="miniText">
+                      The basic slider is horizontal and has a single handle that can be moved with the mouse or by using the arrow keys. Combine three sliders to create a simple RGB colorpicker.
+                    </p>
+
+                    <p class="ui-state-default ui-corner-all ui-helper-clearfix miniText" style="padding:4px;">
+                      <span class="ui-icon ui-icon-pencil" style="float:left; margin:-2px 5px 0 0;"></span>
+                      Simple Colorpicker
+                    </p>
+                     <div  class="miniText">
+                      <div id="red"></div>
+                      <div id="green"></div>
+                      <div id="blue"></div>
+                    </div>
+                     
+                    <div id="swatch" class="ui-widget-content ui-corner-all" style="margin-left: 30vw; margin-top: 4vh;"></div>
+                    
+                    <br><br>
+
+                    <h3 class="miniHeaderText">
+                      Tabs
+                    </h3>
+                      <p class="miniText">
+                        Click tabs to swap between content that is broken into logical sections.
+                      </p>
+
+                      <div id="tabs" class="miniText">
+                        <ul>
+                          <li><a href="#tabs-1">Nunc tincidunt</a></li>
+                          <li><a href="#tabs-2">Proin dolor</a></li>
+                          <li><a href="#tabs-3">Aenean lacinia</a></li>
+                        </ul>
+                        <div id="tabs-1">
+                          <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+                        </div>
+                        <div id="tabs-2">
+                          <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+                        </div>
+                        <div id="tabs-3">
+                          <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+                          <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+                        </div>
+                      </div>
+                        <h3 class="miniHeaderText">
+                          Effects
+                        </h3>
+                          <p class="miniText">
+                            Click the button bellow to show the effect. These effects can be added to all kinds of things, including images.
+                          </p>
+                          <div class="toggler">
+                            <div id="effect" class="ui-widget-content ui-corner-all miniText">
+                              <h3 class="ui-widget-header ui-corner-all">Effect</h3>
+                              <p>
+                                Etiam libero neque, luctus a, eleifend nec, semper at, lorem. Sed pede. Nulla lorem metus, adipiscing ut, luctus sed, hendrerit vitae, mi.
+                              </p>
+                            </div>
+                          </div>
+                           
+                          <select name="effects" id="effectTypes" class="miniText">
+                            <option value="blind">Blind</option>
+                            <option value="bounce">Bounce</option>
+                            <option value="clip">Clip</option>
+                            <option value="drop">Drop</option>
+                            <option value="explode">Explode</option>
+                            <option value="fade">Fade</option>
+                            <option value="fold">Fold</option>
+                            <option value="highlight">Highlight</option>
+                            <option value="puff">Puff</option>
+                            <option value="pulsate">Pulsate</option>
+                            <option value="scale">Scale</option>
+                            <option value="shake">Shake</option>
+                            <option value="size">Size</option>
+                            <option value="slide">Slide</option>
+                            <option value="transfer">Transfer</option>
+                          </select>
+                           
+                          <button id="button" class="ui-state-default ui-corner-all">Run Effect</button>
+
+
+
+        
+
+
+
+
+
+
+        </article>
+
+        <article class="articleTwo">
+          
+        </article>
+      </div>
+
+    </div>
+  </body>
+</html>
